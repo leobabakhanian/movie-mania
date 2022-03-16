@@ -7,6 +7,7 @@ import Skeleton from "@mui/material/Skeleton";
 import Rating from "@mui/material/Rating";
 import useStyles from "./styles";
 import StarIcon from "@mui/icons-material/Star";
+import { Card, CardMedia, CardContent } from "@mui/material";
 
 const movies = [
   {
@@ -88,89 +89,105 @@ function Media() {
   const classes = useStyles();
   return (
     <>
-      <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+      <Grid container spacing={1} style={{ paddingRight: 25 }}>
         {movies.map((item, index) => (
-          <Grid item xs={12} sm={4} className={classes.movie}>
-            <img
-              style={{ width: 155, height: 230 }}
-              alt={item.title}
-              src={item.src}
-            />
-            {item ? (
-              <>
-                <Typography
-                  gutterBottom
-                  variant="body2"
-                  className={classes.title}
-                >
-                  {item.title} ({item.releaseDate})
-                </Typography>
-                <Typography
-                  display="block"
-                  variant="caption"
-                  color="text.secondary"
-                >
-                  {item.director}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  <Rating
-                    value={item.rating / 2}
-                    precision={0.1}
-                    readOnly
-                    emptyIcon={<StarIcon style={{ opacity: 1 }} />}
-                  />
-                </Typography>
-                <br />
-              </>
-            ) : (
-              <Box sx={{ pt: 0.5 }}>
-                <Skeleton />
-                <Skeleton width="60%" />
-              </Box>
-            )}
+          <Grid item xs={12} sm={4} style={{ display: "flex" }}>
+            <Card
+              variant="outlined"
+              classes={classes.card}
+              style={{ width: "100%" }}
+            >
+              <CardMedia
+                className={classes.media}
+                image={item.src}
+                title={item.title}
+              />
+              <CardContent>
+                {item ? (
+                  <div className={classes.content}>
+                    <Typography
+                      gutterBottom
+                      variant="body2"
+                      className={classes.title}
+                    >
+                      {item.title} ({item.releaseDate})
+                    </Typography>
+                    <Typography
+                      display="block"
+                      variant="caption"
+                      color="text.secondary"
+                    >
+                      {item.director}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      <Rating
+                        value={item.rating / 2}
+                        precision={0.1}
+                        readOnly
+                        emptyIcon={<StarIcon style={{ opacity: 1 }} />}
+                      />
+                    </Typography>
+                    <br />
+                  </div>
+                ) : (
+                  <Box sx={{ pt: 0.5 }}>
+                    <Skeleton />
+                    <Skeleton width="60%" />
+                  </Box>
+                )}
+              </CardContent>
+            </Card>
           </Grid>
         ))}
       </Grid>
       <br />
-      <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+      <Grid container spacing={1} style={{ paddingRight: 25 }}>
         {shows.map((item, index) => (
-          <Grid item xs={12} sm={4} className={classes.movie}>
-            <img
-              style={{ width: 155, height: 230 }}
-              alt={item.title}
-              src={item.src}
-            />
-            {item ? (
-              <>
-                <Typography
-                  gutterBottom
-                  variant="body2"
-                  className={classes.title}
-                >
-                  {item.title} ({item.releaseDate})
-                </Typography>
-                <Typography
-                  display="block"
-                  variant="caption"
-                  color="text.secondary"
-                >
-                  {item.director}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  <Rating
-                    value={item.rating / 2}
-                    precision={0.1}
-                    readOnly
-                    emptyIcon={<StarIcon style={{ opacity: 1 }} />}
-                  />
-                </Typography>
-              </>
-            ) : (
-              <Box sx={{ pt: 0.5 }}>
-                <Skeleton />
-                <Skeleton width="60%" />
-              </Box>
-            )}
+          <Grid item xs={12} sm={4} style={{ display: "flex" }}>
+            <Card
+              variant="outlined"
+              classes={classes.card}
+              style={{ width: "100%" }}
+            >
+              <CardMedia
+                className={classes.media}
+                image={item.src}
+                title={item.title}
+              />
+              <CardContent className={classes.content}>
+                {item ? (
+                  <>
+                    <Typography
+                      gutterBottom
+                      variant="body2"
+                      className={classes.title}
+                    >
+                      {item.title} ({item.releaseDate})
+                    </Typography>
+                    <Typography
+                      display="block"
+                      variant="caption"
+                      color="text.secondary"
+                    >
+                      {item.director}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      <Rating
+                        value={item.rating / 2}
+                        precision={0.1}
+                        readOnly
+                        emptyIcon={<StarIcon style={{ opacity: 1 }} />}
+                      />
+                    </Typography>
+                  </>
+                ) : (
+                  <Box sx={{ pt: 0.5 }}>
+                    <Skeleton />
+                    <Skeleton width="60%" />
+                  </Box>
+                )}
+              </CardContent>
+            </Card>
           </Grid>
         ))}
       </Grid>

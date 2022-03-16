@@ -18,31 +18,11 @@ const OurLists = () => {
           spacing={3}
           style={{ marginTop: 25 }}
         >
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            style={{
-              background: "#D3D3D3",
-              paddingBottom: 25,
-              borderTopLeftRadius: 25,
-              borderBottomLeftRadius: 25,
-            }}
-          >
+          <Grid item xs={12} sm={6}>
             <h6>Leo's List</h6>
             <LeoList />
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            style={{
-              background: "#FFCCCB",
-              paddingBottom: 25,
-              borderTopRightRadius: 25,
-              borderBottomRightRadius: 25,
-            }}
-          >
+          <Grid item xs={12} sm={6}>
             <h6>Vardges' List</h6>
             <VardgesList />
           </Grid>

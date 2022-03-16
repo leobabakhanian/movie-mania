@@ -45,17 +45,22 @@ const Post = ({ post, setCurrentId }) => {
       </div>
       <CardActions className={classes.cardActions}>
         {user?.result?._id === post?.author && (
-          <>
-            <ThemeProvider theme={theme}>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => dispatch(deletePost(post._id))}
-              >
-                <DeleteIcon fontSize="small" />
-              </Button>
-            </ThemeProvider>
-          </>
+          <ThemeProvider theme={theme}>
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => setCurrentId(post._id)}
+            >
+              <EditIcon fontSize="small" />
+            </Button>
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => dispatch(deletePost(post._id))}
+            >
+              <DeleteIcon fontSize="small" />
+            </Button>
+          </ThemeProvider>
         )}
       </CardActions>
     </Card>
