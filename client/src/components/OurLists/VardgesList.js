@@ -89,6 +89,10 @@ function Media() {
   const classes = useStyles();
   return (
     <>
+      <Typography variant="h5" className={classes.list}>
+        Vardges' Top 5 Shows
+      </Typography>
+      <br />
       <Grid container spacing={1} style={{ paddingRight: 25 }}>
         {movies.map((item, index) => (
           <Grid item xs={12} sm={4} style={{ display: "flex" }}>
@@ -140,6 +144,12 @@ function Media() {
           </Grid>
         ))}
       </Grid>
+      <br />
+      <hr />
+      <br />
+      <Typography variant="h5" className={classes.list}>
+        Vardges' Top 5 Shows
+      </Typography>
       <br />
       <Grid container spacing={1} style={{ paddingRight: 25 }}>
         {shows.map((item, index) => (

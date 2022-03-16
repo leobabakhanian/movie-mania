@@ -20,4 +20,12 @@ export default makeStyles((theme) => ({
     position: "relative",
     background: "transparent",
   },
+  paper: {
+    width: 300,
+    padding: 10,
+  },
+  list: {
+    fontWeight: "600 !important",
+    textAlign: "center",
+  },
 }));

@@ -34,7 +34,7 @@ const Post = ({ post, setCurrentId }) => {
     <Card className={classes.card} variant="outlined">
       <div className={classes.text}>
         <Typography variant="h6" className={classes.title}>
-          {post.name}
+          {post.title}
         </Typography>
         <div className={classes.message}>
           <Typography variant="h8">{post.message}</Typography>

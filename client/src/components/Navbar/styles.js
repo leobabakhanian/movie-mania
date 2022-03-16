@@ -25,6 +25,7 @@ export default makeStyles((theme) => ({
   userName: {
     display: "flex",
     alignItems: "center",
+    fontSize: "16px !important",
   },
   brandContainer: {
     display: "flex",
@@ -33,5 +34,11 @@ export default makeStyles((theme) => ({
   logout: {},
   avatar: {
     background: "#dc1a22",
+  },
+  profile: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "300px",
+    color: "#fff",
   },
 }));

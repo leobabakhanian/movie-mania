@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://movie-mania-584.herokuapp.com/",
+  baseURL: "http://localhost:5000",
 });
 
 API.interceptors.request.use((req) => {
@@ -14,6 +14,8 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
+export const fetchPolls = () => API.get("/polls");
+export const votePoll = (id) => API.patch(`/polls/${id}/votePoll`);
 export const fetchPosts = () => API.get("/posts");
 export const createPost = (newPost) => API.post("/posts", newPost);
 export const updatePost = (id, updatedPost) =>

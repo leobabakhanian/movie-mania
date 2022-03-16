@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./NavBar.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import logo from "../../images/logo.png";
-import { Button } from "@mui/material";
+import { Button, Avatar, Typography } from "@mui/material";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import useStyles from "./styles";
 import { useDispatch } from "react-redux";
@@ -84,16 +84,28 @@ const NavBar = () => {
             </Nav>
             <div className="signin">
               {user?.result ? (
-                <ThemeProvider theme={theme}>
-                  <Button
-                    variant="outlined"
-                    className={classes.logout}
-                    color="secondary"
-                    onClick={logout}
-                  >
-                    Sign out
-                  </Button>
-                </ThemeProvider>
+                <div className={classes.profile}>
+                  <ThemeProvider theme={theme}>
+                    <Avatar
+                      className={classes.avatar}
+                      alt={user.result.username}
+                      src={user.result.imageUrl}
+                    >
+                      {user.result.username.charAt(0)}
+                    </Avatar>
+                    <Typography className={classes.userName} variant="h6">
+                      {user.result.username}
+                    </Typography>
+                    <Button
+                      variant="outlined"
+                      className={classes.logout}
+                      color="secondary"
+                      onClick={logout}
+                    >
+                      Sign out
+                    </Button>
+                  </ThemeProvider>
+                </div>
               ) : (
                 <Button
                   component={Link}
