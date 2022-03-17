@@ -11,6 +11,11 @@ export default (posts = [], action) => {
         task._id === action.payload._id ? action.payload : task
       );
 
+    case "LIKE":
+      return posts.map((post) =>
+        post._id === action.payload._id ? action.payload : post
+      );
+
     case "DELETE":
       return posts.filter((task) => task._id !== action.payload);
 

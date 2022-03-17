@@ -90,7 +90,7 @@ function Media() {
   return (
     <>
       <Typography variant="h5" className={classes.list}>
-        Vardges' Top 5 Shows
+        Vardges' Top 5 Movies
       </Typography>
       <br />
       <Grid container spacing={1} style={{ paddingRight: 25 }}>

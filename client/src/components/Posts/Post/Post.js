@@ -1,21 +1,14 @@
 import React from "react";
 import useStyles from "./styles";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-} from "@mui/material";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import { Card, CardActions, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { deletePost } from "../../../actions/posts";
+import { deletePost, likePost } from "../../../actions/posts";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
@@ -29,6 +22,29 @@ const Post = ({ post, setCurrentId }) => {
       },
     },
   });
+
+  const Likes = () => {
+    if (post.likes && post.likes.length > 0) {
+      return post.likes.find((like) => like === user?.result?._id) ? (
+        <>
+          <ThumbUpAltIcon fontSize="small" />
+          &nbsp;{post.likes.length}
+        </>
+      ) : (
+        <>
+          <ThumbUpOffAltIcon fontSize="small" />
+          &nbsp;{post.likes.length}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <ThumbUpOffAltIcon fontSize="small" />
+        &nbsp;Like
+      </>
+    );
+  };
 
   return (
     <Card className={classes.card} variant="outlined">
@@ -44,24 +60,34 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
       </div>
       <CardActions className={classes.cardActions}>
-        {user?.result?._id === post?.author && (
-          <ThemeProvider theme={theme}>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => setCurrentId(post._id)}
-            >
-              <EditIcon fontSize="small" />
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => dispatch(deletePost(post._id))}
-            >
-              <DeleteIcon fontSize="small" />
-            </Button>
-          </ThemeProvider>
-        )}
+        <ThemeProvider theme={theme}>
+          <Button
+            size="small"
+            color="primary"
+            disabled={!user?.result}
+            onClick={() => dispatch(likePost(post._id))}
+          >
+            <Likes />
+          </Button>
+          {user?.result?._id === post?.author && (
+            <>
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => setCurrentId(post._id)}
+              >
+                <EditIcon fontSize="small" />
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => dispatch(deletePost(post._id))}
+              >
+                <DeleteIcon fontSize="small" />
+              </Button>
+            </>
+          )}
+        </ThemeProvider>
       </CardActions>
     </Card>
   );

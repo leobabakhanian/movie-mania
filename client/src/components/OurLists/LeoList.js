@@ -7,7 +7,7 @@ import Skeleton from "@mui/material/Skeleton";
 import Rating from "@mui/material/Rating";
 import useStyles from "./styles";
 import StarIcon from "@mui/icons-material/Star";
-import { Card, CardMedia, CardContent, Paper } from "@mui/material";
+import { Card, CardMedia, CardContent } from "@mui/material";
 
 const movies = [
   {
