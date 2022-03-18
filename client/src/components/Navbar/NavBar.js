@@ -68,7 +68,7 @@ const NavBar = () => {
             <Nav>
               <Nav.Link id="nav-disable">
                 <Link to="/" id="nav-btn">
-                  Posts
+                  Discuss
                 </Link>
               </Nav.Link>
               <Nav.Link className="nav-link" id="nav-disable">

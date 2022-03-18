@@ -4,7 +4,6 @@ import { TextField, Button, Typography, Paper } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
 import { useSelector } from "react-redux";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
@@ -18,14 +17,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
-
-  const theme = createTheme({
-    palette: {
-      secondary: {
-        main: "#28a244",
-      },
-    },
-  });
+  const [name, setName] = useState();
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -81,7 +73,10 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Title"
           fullWidth
           value={postData.title}
-          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+          onChange={(e) => {
+            setName(e.target.value);
+            setPostData({ ...postData, title: e.target.value });
+          }}
         />
         <TextField
           name="message"
@@ -90,9 +85,10 @@ const Form = ({ currentId, setCurrentId }) => {
           fullWidth
           multiline
           value={postData.message}
-          onChange={(e) =>
-            setPostData({ ...postData, message: e.target.value })
-          }
+          onChange={(e) => {
+            setName(e.target.value);
+            setPostData({ ...postData, message: e.target.value });
+          }}
         />
         <Button
           className={classes.buttonSubmit}
@@ -101,6 +97,7 @@ const Form = ({ currentId, setCurrentId }) => {
           size="large"
           type="submit"
           fullWidth
+          disabled={!name}
         >
           Submit
         </Button>

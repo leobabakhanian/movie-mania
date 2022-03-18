@@ -82,4 +82,29 @@ export const likePost = async (req, res) => {
   res.status(200).json(updatedPost);
 };
 
+export const dislikePost = async (req, res) => {
+  const { id } = req.params;
+
+  if (!req.userId) {
+    return res.json({ message: "Not authenticated" });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No post with id: ${id}`);
+
+  const post = await PostMessage.findById(id);
+
+  const index = post.dislikes.findIndex((id) => id === String(req.userId));
+
+  if (index === -1) {
+    post.dislikes.push(req.userId);
+  } else {
+    post.dislikes = post.dislikes.filter((id) => id !== String(req.userId));
+  }
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
+    new: true,
+  });
+  res.status(200).json(updatedPost);
+};
+
 export default router;

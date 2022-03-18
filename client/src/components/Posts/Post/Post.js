@@ -5,10 +5,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { deletePost, likePost } from "../../../actions/posts";
+import { deletePost, likePost, dislikePost } from "../../../actions/posts";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
@@ -27,12 +29,12 @@ const Post = ({ post, setCurrentId }) => {
     if (post.likes && post.likes.length > 0) {
       return post.likes.find((like) => like === user?.result?._id) ? (
         <>
-          <ThumbUpAltIcon fontSize="small" />
+          <ThumbUpAltIcon />
           &nbsp;{post.likes.length}
         </>
       ) : (
         <>
-          <ThumbUpOffAltIcon fontSize="small" />
+          <ThumbUpOffAltIcon />
           &nbsp;{post.likes.length}
         </>
       );
@@ -40,7 +42,29 @@ const Post = ({ post, setCurrentId }) => {
 
     return (
       <>
-        <ThumbUpOffAltIcon fontSize="small" />
+        <ThumbUpOffAltIcon />
+      </>
+    );
+  };
+
+  const Dislikes = () => {
+    if (post.dislikes && post.dislikes.length > 0) {
+      return post.dislikes.find((dislike) => dislike === user?.result?._id) ? (
+        <>
+          <ThumbDownAltIcon />
+          &nbsp;{post.dislikes.length}
+        </>
+      ) : (
+        <>
+          <ThumbDownOffAltIcon />
+          &nbsp;{post.dislikes.length}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <ThumbDownOffAltIcon />
       </>
     );
   };
@@ -67,6 +91,14 @@ const Post = ({ post, setCurrentId }) => {
             onClick={() => dispatch(likePost(post._id))}
           >
             <Likes />
+          </Button>
+          <Button
+            size="small"
+            color="primary"
+            disabled={!user?.result}
+            onClick={() => dispatch(dislikePost(post._id))}
+          >
+            <Dislikes />
           </Button>
           {user?.result?._id === post?.author && (
             <>

@@ -45,3 +45,13 @@ export const likePost = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const dislikePost = (id) => async (dispatch) => {
+  const user = JSON.parse(localStorage.getItem("profile"));
+  try {
+    const { data } = await api.dislikePost(id, user?.token);
+    dispatch({ type: "DISLIKE", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
