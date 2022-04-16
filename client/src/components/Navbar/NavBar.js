@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const NavBar = () => {
   const classes = useStyles();
+  //Model
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const history = useHistory();
@@ -24,6 +25,7 @@ const NavBar = () => {
     },
   });
 
+  //Controller
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     history.push("/auth");
@@ -42,6 +44,7 @@ const NavBar = () => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
+  //navbar view
   return (
     <div className="header">
       <Navbar

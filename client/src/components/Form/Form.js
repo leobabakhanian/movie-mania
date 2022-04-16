@@ -6,6 +6,7 @@ import { createPost, updatePost } from "../../actions/posts";
 import { useSelector } from "react-redux";
 
 const Form = ({ currentId, setCurrentId }) => {
+  //Model
   const [postData, setPostData] = useState({
     title: "",
     message: "",
@@ -23,6 +24,7 @@ const Form = ({ currentId, setCurrentId }) => {
     if (post) setPostData(post);
   }, [post]);
 
+  //Controller
   const clear = () => {
     setCurrentId(0);
     setPostData({
@@ -56,6 +58,7 @@ const Form = ({ currentId, setCurrentId }) => {
     );
   }
 
+  //Form view
   return (
     <Paper className={classes.paper} variant="outlined">
       <form

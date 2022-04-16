@@ -22,6 +22,7 @@ const initialState = {
 };
 
 const Auth = () => {
+  //Model
   const [formData, setFormData] = useState(initialState);
   const [isSignUp, setIsSignUp] = useState(false);
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const Auth = () => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
 
+  //Controller
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
 
@@ -51,6 +53,7 @@ const Auth = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  //View
   return (
     <Container component="main" maxWidth="xs" className={classes.mainContainer}>
       <Paper className={classes.paper} elevation={3}>
