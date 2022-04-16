@@ -156,37 +156,28 @@ function Media() {
 								title={item.title}
 							/>
 							<CardContent>
-								{item ? (
-									<>
-										<Typography
-											gutterBottom
-											variant="body2"
-											className={classes.title}
-										>
-											{item.title} ({item.releaseDate})
-										</Typography>
-										<Typography
-											display="block"
-											variant="caption"
-											color="text.secondary"
-										>
-											{item.director}
-										</Typography>
-										<Typography variant="caption" color="text.secondary">
-											<Rating
-												value={item.rating / 2}
-												precision={0.1}
-												readOnly
-												emptyIcon={<StarIcon style={{ opacity: 1 }} />}
-											/>
-										</Typography>
-									</>
-								) : (
-									<Box sx={{ pt: 0.5 }}>
-										<Skeleton />
-										<Skeleton width="60%" />
-									</Box>
-								)}
+								<Typography
+									gutterBottom
+									variant="body2"
+									className={classes.title}
+								>
+									{item.title} ({item.releaseDate})
+								</Typography>
+								<Typography
+									display="block"
+									variant="caption"
+									color="text.secondary"
+								>
+									{item.director}
+								</Typography>
+								<Typography variant="caption" color="text.secondary">
+									<Rating
+										value={item.rating / 2}
+										precision={0.1}
+										readOnly
+										emptyIcon={<StarIcon style={{ opacity: 1 }} />}
+									/>
+								</Typography>
 							</CardContent>
 						</Card>
 					</Grid>
