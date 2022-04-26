@@ -43,7 +43,7 @@ const movies = [
 		title: "Jojo Rabbit",
 		director: "Taika Waititi",
 		rating: 7.9,
-		releaseDate: "2003",
+		releaseDate: "2019",
 	},
 ];
 
