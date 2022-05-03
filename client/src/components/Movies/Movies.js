@@ -29,6 +29,11 @@ const Movies = () => {
 						value={searchTerm}
 						onChange={(e) => setSearchTerm(e.target.value)}
 						placeholder="Search for movies"
+						onKeyPress={(e) => {
+							if (e.key === "Enter") {
+								searchMovies(searchTerm);
+							}
+						}}
 					/>
 					<IconButton onClick={() => searchMovies(searchTerm)}>
 						<SearchIcon style={{ color: "#fff", fontSize: 30 }} />
