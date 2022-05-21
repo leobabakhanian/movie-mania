@@ -122,7 +122,7 @@ function Media() {
 									variant="body2"
 									className={classes.title}
 								>
-									{index + 1}: {item.title} ({item.releaseDate})
+									{index + 1}. {item.title} ({item.releaseDate})
 								</Typography>
 								<Typography
 									display="block"
@@ -168,7 +168,7 @@ function Media() {
 					<CardMedia image={item.src} sx={{ width: 100 }} />
 					<CardContent sx={{ pl: 4 }}>
 						<Typography gutterBottom variant="body2" className={classes.title}>
-							{index + 1}: {item.title} ({item.releaseDate})
+							{index + 1}. {item.title} ({item.releaseDate})
 						</Typography>
 						<Typography
 							display="block"
